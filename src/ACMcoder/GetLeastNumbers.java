@@ -1,13 +1,28 @@
-package Sort;
+package ACMcoder;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
-public class Quicksort {
-    public int[] SortArray(int[] nums){
-        if (nums.length<2) return nums;
-        quicksort(nums, 0, nums.length-1);
-        return nums;
+public class GetLeastNumbers {
+
+    public static void main(String[] args) {
+        int[] input = {4,5,1,6,2,7,3,8};
+        int k = 4;
+        ArrayList<Integer> res = GetLeastNumbers_Solution(input,k);
+        System.out.println(res.toString());
     }
+
+    public static ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        if (input.length==0 || k==0) return arrayList;
+        quicksort(input,0,input.length-1);
+        for (int i=0;i<k;i++){
+            arrayList.add(input[i]);
+        }
+        return arrayList;
+    }
+
     public static void quicksort(int[] nums, int left, int right){
         if (left<right){
             int smallindex = partion(nums,left,right);
